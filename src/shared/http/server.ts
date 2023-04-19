@@ -8,10 +8,10 @@ npm add typeorm reflect-metadata pg
 "typeorm": "^0.3.15"
 */
 import 'reflect-metadata';
-//import AppError from '@shared/errors/AppError';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import routes from './routes';
+import AppError from '../errors/AppError';
 
 const app = express();
 
@@ -27,11 +27,11 @@ app.use(
         status: 'error',
         message: error.message,
       });
+      return response.status(500).json({
+        status: 'error',
+        message: 'Internal Server Error',
+      });
     }
-    return response.status(500).json({
-      status: 'error',
-      message: 'Internal Server Error',
-    });
   },
 );
 
