@@ -5,13 +5,15 @@ npx tsc --init --rootDir src --outDir build --esModuleInterop --resolveJsonModul
 npm add express cors express-async-errors
 npm add -D @types/express @types/cors
 npm add typeorm reflect-metadata pg
+npm add -D tsconfig-paths
 "typeorm": "^0.3.15"
 */
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import routes from './routes';
-import AppError from '../errors/AppError';
+import AppError from '@shared/errors/AppError';
+import '@shared/typeorm';
 
 const app = express();
 
