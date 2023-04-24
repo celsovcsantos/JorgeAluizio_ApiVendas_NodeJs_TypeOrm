@@ -12,7 +12,7 @@ class Product {
   id: string;
 
   @Column()
-  nome: string;
+  name: string;
 
   @Column('decimal')
   price: number;
