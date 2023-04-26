@@ -8,6 +8,8 @@ npm add typeorm reflect-metadata pg
 npm add -D tsconfig-paths
 npm add -D celebrate
 npm add -D @types/joi
+npm i bcryptjs -D
+npm add -D @types/bcryptjs
 "typeorm": "^0.3.15"
 */
 import 'reflect-metadata';
