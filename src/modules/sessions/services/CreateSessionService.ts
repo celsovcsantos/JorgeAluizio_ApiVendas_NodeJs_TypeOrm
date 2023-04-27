@@ -4,19 +4,20 @@ import AppError from '@shared/errors/AppError';
 import User from '../../users/typeorm/entities/User';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
+import authConfig from '@config/auth';
 
 interface IRequest {
   email: string;
   password: string;
 }
 
-// interface IResponse {
-//   user: User;
-//   token: string;
-// }
+interface IResponse {
+  user: User;
+  token: string;
+}
 
 class CreateSessionService {
-  public async execute({ email, password }: IRequest): Promise<User> {
+  public async execute({ email, password }: IRequest): Promise<IResponse> {
     const userRepository = getCustomRepository(UserRepository);
     const user = await userRepository.findByEmail(email);
     if (!user) {
@@ -27,10 +28,9 @@ class CreateSessionService {
       throw new AppError('Credencial inválida');
     }
 
-    const secret = '1e6534cb0e825f77c9ba0a7d5647d6bc'; //retirado do site https://www.md5.cz/ utilizando o string "fdsghdfdfghdfghgfhfghhdfghdfghdfghet5tuuiukjkjhghhxchvbmjhgtdsfhjfghkjhjgfhdghjhfgkghhdfgbstedrtyrtuyrtiytjytuioiuoiuyknnjghjk"
-    const token = sign({}, secret, {
+    const token = sign({}, authConfig.jwt.secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn: authConfig.jwt.expiresIn,
     });
 
     return { user, token };

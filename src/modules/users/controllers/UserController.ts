@@ -6,10 +6,11 @@ import UpdateUserService from '../services/UpdateUserService';
 import DeleteUserService from '../services/DeleteUserService';
 
 export default class UserController {
-  public async index(request: Request, response: Response): Promise<Response> {
+  public async index(req: Request, res: Response): Promise<Response> {
     const listUsers = new ListUserService();
+    console.log(req.user.id);
     const users = await listUsers.execute();
-    return response.json(users);
+    return res.json(users);
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
