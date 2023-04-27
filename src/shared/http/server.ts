@@ -12,6 +12,8 @@ npm i bcryptjs -D
 npm add -D @types/bcryptjs
 npm i jsonwebtoken
 npm i @types/jsonwebtoken -D
+npm add multer
+npm add -D @types/multer
 "typeorm": "^0.3.15"
 */
 import 'reflect-metadata';
