@@ -10,6 +10,8 @@ npm add -D celebrate
 npm add -D @types/joi
 npm i bcryptjs -D
 npm add -D @types/bcryptjs
+npm i jsonwebtoken
+npm i @types/jsonwebtoken -D
 "typeorm": "^0.3.15"
 */
 import 'reflect-metadata';
