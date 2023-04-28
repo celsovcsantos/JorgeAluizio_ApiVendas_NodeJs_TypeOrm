@@ -51,5 +51,12 @@ npm i jsonwebtoken
 npm i @types/jsonwebtoken -D
 npm add multer
 npm add -D @types/multer
+
+
+--criar tabela migracao Ex.: npx typeorm migration:create -n CreateUserTokens
+--rodar a migracao Ex.: npm run typeorm migration:run
+
+
+
 "typeorm": "^0.3.15"
 */
