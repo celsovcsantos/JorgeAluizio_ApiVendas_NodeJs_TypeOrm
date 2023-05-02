@@ -3,6 +3,7 @@ import { UserRepository } from '../typeorm/repositories/UserRepository';
 import AppError from '@shared/errors/AppError';
 import User from '../typeorm/entities/User';
 import { hash } from 'bcryptjs';
+import authConfig from '@config/auth';
 
 interface IRequest {
   name: string;
@@ -17,7 +18,7 @@ class CreateUserService {
     if (emailExists) {
       throw new AppError(`Usuário com o email '${email}' já existe`);
     }
-    const hashedPassword = await hash(password, 8);
+    const hashedPassword = await hash(password, authConfig.jwt.qtdCaracteresHash);
     const user = userRepository.create({
       name,
       email,
