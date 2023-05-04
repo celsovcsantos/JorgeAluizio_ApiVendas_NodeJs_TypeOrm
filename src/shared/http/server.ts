@@ -52,6 +52,8 @@ npm i @types/jsonwebtoken -D
 npm add multer
 npm add -D @types/multer
 npm add date-fns
+npm add nodemailer
+npm add -D @types/nodemailer
 
 --criar banco do projeto (postgres) no docker
 docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
