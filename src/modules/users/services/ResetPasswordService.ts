@@ -33,6 +33,8 @@ class ResetPasswordService {
     }
 
     user.password = await hash(password, authConfig.jwt.qtdCaracteresHash);
+
+    await userRepository.save(user);
   }
 }
 
